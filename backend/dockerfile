@@ -1,0 +1,9 @@
+FROM openjdk:11
+WORKDIR /
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
+RUN ./mvnw clean install -DskipTests
+
+ENTRYPOINT ["java","-jar","target/phase1-0.0.1-SNAPSHOT.jar"]
